@@ -3,9 +3,9 @@ try:
     from pre import SETTINGS
 except:
     pass
-exec 'from %s import *' % SETTINGS
+exec('from %s import *' % SETTINGS)
 
 try:
-    from local import *
+    from .local import *
 except ImportError:
     pass

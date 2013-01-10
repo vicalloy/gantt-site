@@ -1,4 +1,4 @@
-from base import *
+from .base import *
 
 DEBUG = True
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -9,7 +9,7 @@ try:
     INSTALLED_APPS += ('debug_toolbar',)
     MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
     INTERNAL_IPS = ('127.0.0.1',)
-except Exception, e:
+except Exception as e:
     pass
 
 #devserver
@@ -18,5 +18,5 @@ try:
     INSTALLED_APPS += ('devserver',)
     MIDDLEWARE_CLASSES += ('devserver.middleware.DevServerMiddleware',)
     INSTALLED_APPS = ('devserver',) + INSTALLED_APPS#devserver must in first
-except Exception, e:
+except Exception as e:
     pass
