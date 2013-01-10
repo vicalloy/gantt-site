@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en-au">
+  <head>
+		<title>{{gantt.name}}</title>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1" />
+      <link rel="stylesheet" href="{{STATIC_URL}}libs/gantt/css/style.css" />
+      <link rel="stylesheet" href="{{STATIC_URL}}css/style.css" />
+      <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" />
+    </head>
+    <body>
+      <div class="contain">
+        <div class="gantt"></div>
+        <div class="fn-gantt">
+          <span class="label fn-label ganttCoffe"> <span class="fn-label"> Coffe </span> </span>
+          <span class="label fn-label ganttGreen"> <span class="fn-label"> Green </span> </span>
+          <span class="label fn-label ganttOrange"> <span class="fn-label"> Orange </span> </span>
+          <span class="label fn-label ganttBlue"> <span class="fn-label"> Blue </span> </span>
+          <span class="label fn-label ganttRed"> <span class="fn-label"> Red </span> </span>
+        </div>
+      </div>
+    </body>
+    <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+		<script src="{{STATIC_URL}}libs/gantt/js/jquery.fn.gantt.min.js"></script>
+    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-tooltip.js"></script>
+    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-popover.js"></script>
+		<script>
+      $(function() {
+        "use strict";
+        $(".gantt").gantt({
+            source: {{gantt_json|safe}},
+            navigate: "scroll",
+            scale: "days",
+            maxScale: "months",
+            minScale: "days",
+            itemsPerPage: 20,
+            onItemClick: function(data) {
+              //alert("Item clicked - show some details");
+            },
+            onAddClick: function(dt, rowId) {
+              //alert("Empty space clicked - add an item!");
+            },
+            onRender: function() {
+              if (window.console && typeof console.log === "function") {
+                console.log("chart rendered");
+              }
+            }
+        });
+        <!--$(".gantt").popover({-->
+            <!--selector: ".bar",-->
+            <!--title: $(this).text,-->
+            <!--content: $(this).data("dataObj"),-->
+            <!--placement: "top",-->
+            <!--trigger: "hover"-->
+        <!--});-->
+      });
+    </script>
+</html>

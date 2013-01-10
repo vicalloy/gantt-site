@@ -1,0 +1,49 @@
+body {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	padding: 0 0 50px 0;
+}
+.contain {
+	max-width: 1200px;
+	margin: auto;
+}
+h1 {
+	margin: 40px 0 20px 0;
+}
+h2 {
+	font-size: 1.5em;
+	padding-bottom: 3px;
+	border-bottom: 1px solid #DDD;
+	margin-top: 50px;
+	margin-bottom: 25px;
+}
+table th:first-child {
+	width: 150px;
+}
+.gantt {
+	margin-bottom: 10px;
+}
+.fn-gantt .ganttGray{
+	background-color: lightgray;
+}
+.fn-gantt .ganttGray .fn-label {
+	color: #714715 !important;
+}
+.fn-gantt .ganttCoffe{
+
+	background-color: #e98A88;
+}
+.fn-gantt .ganttCoffe .fn-label {
+	color: #714715 !important;
+}
+.fn-gantt .ganttBlue{
+
+	background-color: #D0E4FD;
+}
+.fn-gantt .ganttBlue .fn-label {
+	color: #714715 !important;
+}
+.fn-gantt .label {
+	margin: 0 5px;
+}
+
