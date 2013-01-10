@@ -3,17 +3,23 @@ from __future__ import absolute_import
 from __future__ import unicode_literals
 
 import time
+import markdown
 
 from django.db import models
 from django.utils import simplejson
+from django.contrib.auth.models import User
 
 def _fmt_date(d):
     if d:
         return "/Date(%s)/" % (time.mktime(d.timetuple()) * 1000 - 24 * 3600 * 1000)
     return ""
 
+def _md(md, no_p=False):
+    return markdown.markdown(md, ['nl2br', 'fenced_code'], safe_mode='escape')
+
 class Gantt(models.Model):
     name = models.CharField(max_length=64)
+    owner = models.ForeignKey(User)
 
     def __unicode__(self):
         return self.name
@@ -30,7 +36,7 @@ class Gantt(models.Model):
                     subtask_ = {'from': _fmt_date(subtask.from_date),
                             'to': _fmt_date(subtask.to_date),
                             'label': subtask.label,
-                            'desc': subtask.descn,
+                            'desc': _md(subtask.descn),
                             #'dataObj': subtask.descn,
                             'customClass': subtask.color,
                             }
