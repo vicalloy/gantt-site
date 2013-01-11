@@ -15,11 +15,12 @@ def _fmt_date(d):
     return ""
 
 def _md(md, no_p=False):
-    return markdown.markdown(md, ['nl2br', 'fenced_code'], safe_mode='escape')
+    return markdown.markdown(md, ['nl2br', 'fenced_code'], safe_mode='escape') if md else ""
 
 class Gantt(models.Model):
     name = models.CharField(max_length=64)
     owner = models.ForeignKey(User)
+    descn = models.TextField(blank=True)
 
     def __unicode__(self):
         return self.name
@@ -27,6 +28,9 @@ class Gantt(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('gantt_detail', [str(self.id)])
+
+    def get_descn(self):
+        return _md(self.descn)
 
     def tojson(self):
         root = []

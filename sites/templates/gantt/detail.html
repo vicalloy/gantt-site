@@ -11,6 +11,9 @@
     <body>
       <div class="contain">
         <h3>{{gantt.name}}</h3>
+				<div>
+					{{ gantt.get_descn|safe }}
+				</div>
         <div class="gantt"></div>
         <div class="fn-gantt">
           <span class="label fn-label ganttCoffe"> <span class="fn-label"> Coffe </span> </span>
