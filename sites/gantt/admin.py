@@ -23,7 +23,6 @@ class GanttAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         obj.owner = request.user
         obj.save()
-        print vars(obj)
 
     def queryset(self, request):
         qs = super(GanttAdmin, self).queryset(request)
