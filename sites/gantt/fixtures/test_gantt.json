@@ -1,0 +1,76 @@
+[
+ {
+  "pk": 1, 
+  "model": "auth.user", 
+  "fields": {
+   "username": "admin", 
+   "first_name": "", 
+   "last_name": "", 
+   "is_active": true, 
+   "is_superuser": true, 
+   "is_staff": true, 
+   "last_login": "2013-01-10T22:58:12.860", 
+   "groups": [], 
+   "user_permissions": [], 
+   "password": "pbkdf2_sha256$10000$og8pNV6dtQ5k$GduE14mR74I6K9ftJo9HhZJ8GMboaLz/p/De1e5+aEo=", 
+   "email": "admin@admin.com", 
+   "date_joined": "2013-01-10T22:57:13.027"
+  }
+ }, 
+ {
+  "pk": 1, 
+  "model": "gantt.gantt", 
+  "fields": {
+   "owner": 1, 
+   "name": "gantt1"
+  }
+ }, 
+ {
+  "pk": 1, 
+  "model": "gantt.project", 
+  "fields": {
+   "name": "prj1", 
+   "gantt": 1
+  }
+ }, 
+ {
+  "pk": 1, 
+  "model": "gantt.task", 
+  "fields": {
+   "name": "task1", 
+   "prj": 1
+  }
+ }, 
+ {
+  "pk": 2, 
+  "model": "gantt.task", 
+  "fields": {
+   "name": "task2", 
+   "prj": 1
+  }
+ }, 
+ {
+  "pk": 1, 
+  "model": "gantt.subtask", 
+  "fields": {
+   "task": 1, 
+   "color": "ganttCoffe", 
+   "label": "who", 
+   "from_date": "2013-01-11", 
+   "to_date": "2013-02-11", 
+   "descn": "say some"
+  }
+ }, 
+ {
+  "pk": 2, 
+  "model": "gantt.subtask", 
+  "fields": {
+   "task": 2, 
+   "color": "ganttGreen", 
+   "label": "who2", 
+   "from_date": "2013-01-21", 
+   "to_date": "2013-02-11", 
+   "descn": "who do it."
+  }
+ }
+]
