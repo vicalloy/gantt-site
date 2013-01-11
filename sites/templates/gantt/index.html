@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <h3>Gantt</h3>
+  <ul>
+    {% for o in gantts %}
+      <li><a href="{{ o.get_absolute_url }}">{{ o }}</a></li>
+    {% endfor %}
+  </ul>
+</body>
+</html>

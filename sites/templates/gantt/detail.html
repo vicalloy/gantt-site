@@ -10,6 +10,7 @@
     </head>
     <body>
       <div class="contain">
+        <h3>{{gantt.name}}</h3>
         <div class="gantt"></div>
         <div class="fn-gantt">
           <span class="label fn-label ganttCoffe"> <span class="fn-label"> Coffe </span> </span>
@@ -19,11 +20,20 @@
           <span class="label fn-label ganttRed"> <span class="fn-label"> Red </span> </span>
         </div>
       </div>
+      <div id="detail-modal" style="display:none" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h3>Detail</h3>
+        </div>
+        <div class="modal-body">
+        </div>
+      </div>
     </body>
     <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 		<script src="{{STATIC_URL}}libs/gantt/js/jquery.fn.gantt.min.js"></script>
     <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-tooltip.js"></script>
     <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-popover.js"></script>
+    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-modal.js"></script>
 		<script>
       $(function() {
         "use strict";
@@ -35,24 +45,18 @@
             minScale: "days",
             itemsPerPage: 20,
             onItemClick: function(data) {
-              //alert("Item clicked - show some details");
+              var m = $('#detail-modal');
+              $(".modal-body", m).html(data);
+              m.modal('toggle');
             },
-            onAddClick: function(dt, rowId) {
-              //alert("Empty space clicked - add an item!");
-            },
-            onRender: function() {
-              if (window.console && typeof console.log === "function") {
-                console.log("chart rendered");
-              }
-            }
         });
-        <!--$(".gantt").popover({-->
-            <!--selector: ".bar",-->
-            <!--title: $(this).text,-->
-            <!--content: $(this).data("dataObj"),-->
-            <!--placement: "top",-->
-            <!--trigger: "hover"-->
-        <!--});-->
+        $(".gantt").popover({
+            selector: ".bar",
+            title: $(this).text,
+            content: $(this).data("dataObj"),
+            placement: "top",
+            trigger: "click"
+        });
       });
     </script>
 </html>

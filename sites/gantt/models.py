@@ -24,6 +24,10 @@ class Gantt(models.Model):
     def __unicode__(self):
         return self.name
 
+    @models.permalink
+    def get_absolute_url(self):
+        return ('gantt_detail', [str(self.id)])
+
     def tojson(self):
         root = []
         for prj in self.project_set.all():
@@ -33,11 +37,12 @@ class Gantt(models.Model):
                 task_ = {'name': prj_name, 'desc': task.name, 'values': subtasks_}
                 root.append(task_)
                 for subtask in task.subtask_set.all():
+                    desc = _md(subtask.descn)
                     subtask_ = {'from': _fmt_date(subtask.from_date),
                             'to': _fmt_date(subtask.to_date),
                             'label': subtask.label,
-                            'desc': _md(subtask.descn),
-                            #'dataObj': subtask.descn,
+                            'desc': desc,
+                            'dataObj': desc,
                             'customClass': subtask.color,
                             }
                     subtasks_.append(subtask_)
